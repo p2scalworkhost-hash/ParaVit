@@ -658,3 +658,29 @@ html, body {
   body { background: #D0E8D4; display: flex; justify-content: center; }
   .screen { box-shadow: 0 0 60px rgba(0,0,0,0.15); }
 }
+
+/* ===== PDF ACTION BUTTONS (PREMIUM MICRO-ANIMATIONS) ===== */
+.pdf-btnprimary {
+  transition: transform 0.15s ease, background-color 0.2s, box-shadow 0.2s;
+}
+.pdf-btnprimary:hover {
+  background: linear-gradient(135deg, var(--green-800), var(--green-900)) !important;
+  box-shadow: 0 6px 16px rgba(46,125,50,0.35);
+  transform: translateY(-1px);
+}
+.pdf-btnprimary:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 2px 6px rgba(46,125,50,0.2);
+}
+.pdf-btnsecondary {
+  transition: transform 0.15s ease, background-color 0.2s;
+}
+.pdf-btnsecondary:hover {
+  background-color: #CFD8DC !important;
+  color: var(--text-dark) !important;
+  transform: translateY(-1px);
+}
+.pdf-btnsecondary:active {
+  transform: translateY(1px) scale(0.98);
+}
+
