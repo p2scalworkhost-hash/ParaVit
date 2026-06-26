@@ -168,6 +168,7 @@ function navigate(target) {
   if (target === 'alert')  renderAlertScreen();
   if (target === 'calc')   renderCalcScreen();
   if (target === 'trend')  renderTrendScreen(trendTabDays);
+  // tips screen has no dynamic data to render
 }
 
 // ── HOME: Hero card (Cup Lump · สุราษฎร์ธานี) ────────────────
