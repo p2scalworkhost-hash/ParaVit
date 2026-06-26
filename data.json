@@ -1,0 +1,272 @@
+[
+  {
+    "date": "1/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "84",
+    "id": 1,
+    "createdAt": "2026-06-25T11:19:55.175Z",
+    "updatedAt": "2026-06-25T11:19:58.868Z"
+  },
+  {
+    "date": "2/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "84.5",
+    "id": 2,
+    "createdAt": "2026-06-25T11:19:55.186Z",
+    "updatedAt": "2026-06-25T11:19:58.875Z"
+  },
+  {
+    "date": "3/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "84.5",
+    "id": 3,
+    "createdAt": "2026-06-25T11:19:55.200Z",
+    "updatedAt": "2026-06-25T11:19:58.883Z"
+  },
+  {
+    "date": "4/6/2569",
+    "Cup_Lump_surat": "73",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "84.5",
+    "id": 4,
+    "createdAt": "2026-06-25T11:19:55.215Z",
+    "updatedAt": "2026-06-25T11:19:58.890Z"
+  },
+  {
+    "date": "5/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "85",
+    "id": 5,
+    "createdAt": "2026-06-25T11:19:55.223Z",
+    "updatedAt": "2026-06-25T11:19:58.901Z"
+  },
+  {
+    "date": "6/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "86",
+    "id": 6,
+    "createdAt": "2026-06-25T11:19:55.230Z",
+    "updatedAt": "2026-06-25T11:19:58.909Z"
+  },
+  {
+    "date": "7/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "87",
+    "id": 7,
+    "createdAt": "2026-06-25T11:19:55.239Z",
+    "updatedAt": "2026-06-25T11:19:58.916Z"
+  },
+  {
+    "date": "8/6/2569",
+    "Cup_Lump_surat": "72",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "87.5",
+    "id": 8,
+    "createdAt": "2026-06-25T11:19:55.246Z",
+    "updatedAt": "2026-06-25T11:19:58.923Z"
+  },
+  {
+    "date": "9/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "88.45",
+    "id": 9,
+    "createdAt": "2026-06-25T11:19:55.253Z",
+    "updatedAt": "2026-06-25T11:19:58.932Z"
+  },
+  {
+    "date": "10/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "86.55",
+    "Field_Latex_songkhla": "88.45",
+    "id": 10,
+    "createdAt": "2026-06-25T11:19:55.260Z",
+    "updatedAt": "2026-06-25T11:19:58.942Z"
+  },
+  {
+    "date": "11/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "88.95",
+    "id": 11,
+    "createdAt": "2026-06-25T11:19:55.369Z",
+    "updatedAt": "2026-06-25T11:19:58.949Z"
+  },
+  {
+    "date": "12/6/2569",
+    "Cup_Lump_surat": "71",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "88.95",
+    "id": 12,
+    "createdAt": "2026-06-25T11:19:55.521Z",
+    "updatedAt": "2026-06-25T11:19:58.956Z"
+  },
+  {
+    "date": "13/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "88",
+    "id": 13,
+    "createdAt": "2026-06-25T11:19:55.600Z",
+    "updatedAt": "2026-06-25T11:19:58.963Z"
+  },
+  {
+    "date": "14/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "87",
+    "id": 14,
+    "createdAt": "2026-06-25T11:19:55.651Z",
+    "updatedAt": "2026-06-25T11:19:58.970Z"
+  },
+  {
+    "date": "15/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "88.02",
+    "Field_Latex_songkhla": "86",
+    "id": 15,
+    "createdAt": "2026-06-25T11:19:55.757Z",
+    "updatedAt": "2026-06-25T11:19:58.988Z"
+  },
+  {
+    "date": "16/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "85.5",
+    "id": 16,
+    "createdAt": "2026-06-25T11:19:55.764Z",
+    "updatedAt": "2026-06-25T11:19:58.998Z"
+  },
+  {
+    "date": "17/6/2569",
+    "Cup_Lump_surat": "72.88",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "85.95",
+    "id": 17,
+    "createdAt": "2026-06-25T11:19:55.771Z",
+    "updatedAt": "2026-06-25T11:19:59.009Z"
+  },
+  {
+    "date": "18/6/2569",
+    "Cup_Lump_surat": "72.75",
+    "USS_songkhla": "90.03",
+    "Field_Latex_songkhla": "84.45",
+    "id": 18,
+    "createdAt": "2026-06-25T11:19:55.777Z",
+    "updatedAt": "2026-06-25T11:19:59.019Z"
+  },
+  {
+    "date": "19/6/2569",
+    "Cup_Lump_surat": "72.69",
+    "USS_songkhla": "90",
+    "Field_Latex_songkhla": "84.45",
+    "id": 19,
+    "createdAt": "2026-06-25T11:19:55.783Z",
+    "updatedAt": "2026-06-25T11:19:59.026Z"
+  },
+  {
+    "date": "20/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "84",
+    "id": 20,
+    "createdAt": "2026-06-25T11:19:55.791Z",
+    "updatedAt": "2026-06-25T11:19:59.034Z"
+  },
+  {
+    "date": "21/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "83.8",
+    "id": 21,
+    "createdAt": "2026-06-25T11:19:55.797Z",
+    "updatedAt": "2026-06-25T11:19:59.041Z"
+  },
+  {
+    "date": "22/6/2569",
+    "Cup_Lump_surat": "72.8",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "83",
+    "id": 22,
+    "createdAt": "2026-06-25T11:19:55.804Z",
+    "updatedAt": "2026-06-25T11:19:59.051Z"
+  },
+  {
+    "date": "23/6/2569",
+    "Cup_Lump_surat": "73.3",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "82",
+    "id": 23,
+    "createdAt": "2026-06-25T11:19:55.810Z",
+    "updatedAt": "2026-06-25T11:19:59.060Z"
+  },
+  {
+    "date": "24/6/2569",
+    "Cup_Lump_surat": "72.8",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "80.8",
+    "id": 24,
+    "createdAt": "2026-06-25T11:19:55.817Z",
+    "updatedAt": "2026-06-25T11:19:59.071Z"
+  },
+  {
+    "date": "25/6/2569",
+    "Cup_Lump_surat": "68.8",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "78.5",
+    "id": 25,
+    "createdAt": "2026-06-25T11:19:55.823Z",
+    "updatedAt": "2026-06-25T11:19:59.082Z"
+  },
+  {
+    "date": "26/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "0",
+    "id": 26,
+    "createdAt": "2026-06-25T11:19:55.832Z",
+    "updatedAt": "2026-06-25T11:19:59.091Z"
+  },
+  {
+    "date": "27/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "0",
+    "id": 27,
+    "createdAt": "2026-06-25T11:19:55.839Z",
+    "updatedAt": "2026-06-25T11:19:59.109Z"
+  },
+  {
+    "date": "28/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "0",
+    "id": 28,
+    "createdAt": "2026-06-25T11:19:55.845Z",
+    "updatedAt": "2026-06-25T11:19:59.123Z"
+  },
+  {
+    "date": "29/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "0",
+    "id": 29,
+    "createdAt": "2026-06-25T11:19:55.853Z",
+    "updatedAt": "2026-06-25T11:19:59.134Z"
+  },
+  {
+    "date": "30/6/2569",
+    "Cup_Lump_surat": "0",
+    "USS_songkhla": "0",
+    "Field_Latex_songkhla": "0",
+    "id": 30,
+    "createdAt": "2026-06-25T11:19:55.859Z",
+    "updatedAt": "2026-06-25T11:19:59.151Z"
+  }
+]
