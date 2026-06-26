@@ -29,7 +29,7 @@ let lastFetchTime      = null;
 document.addEventListener('DOMContentLoaded', () => {
   loadData();
   updateClock();
-  setInterval(updateClock, 30000);
+  setInterval(updateClock, 1000);
   setInterval(loadData, REFRESH_INTERVAL_MS);
 });
 
@@ -148,7 +148,8 @@ function updateClock() {
   const y    = now.getFullYear() + 543;
   const h    = String(now.getHours()).padStart(2, '0');
   const mn   = String(now.getMinutes()).padStart(2, '0');
-  setText('home-datetime', `${days[now.getDay()]} ${d}/${m}/${y} · ${h}:${mn} น.`);
+  const s    = String(now.getSeconds()).padStart(2, '0');
+  setText('home-datetime', `${days[now.getDay()]} ${d}/${m}/${y} · ${h}:${mn}:${s} น.`);
 }
 
 function updateFetchTimestamp() {
