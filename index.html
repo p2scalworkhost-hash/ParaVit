@@ -104,18 +104,18 @@
       <div class="menu-arrow">›</div>
     </button>
 
-    <button class="menu-card coming-soon-card" disabled>
+    <button class="menu-card active-card" id="btn-risk" onclick="navigate('risk')">
       <div class="menu-icon">⚠️</div>
       <div class="menu-label">เตือนความเสี่ยง</div>
       <div class="menu-sub">แจ้งเตือนความเสี่ยงตลาด</div>
-      <div class="coming-tag">เร็ว ๆ นี้</div>
+      <div class="menu-arrow">›</div>
     </button>
 
-    <button class="menu-card coming-soon-card" disabled>
+    <button class="menu-card active-card" id="btn-tips" onclick="navigate('tips')">
       <div class="menu-icon">📖</div>
       <div class="menu-label">เคล็ดลับเพิ่มรายได้</div>
       <div class="menu-sub">เคล็ดลับเพิ่มผลกำไร</div>
-      <div class="coming-tag">เร็ว ๆ นี้</div>
+      <div class="menu-arrow">›</div>
     </button>
   </div>
 
@@ -382,6 +382,60 @@
       <div class="tech-list" id="tech-list">
         <div class="tech-item">กำลังวิเคราะห์...</div>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: RISK ===================== -->
+<div id="screen-risk" class="screen">
+  <div class="screen-header">
+    <button class="back-btn" onclick="navigate('home')">‹ กลับ</button>
+    <h2 class="screen-title">เตือนความเสี่ยง</h2>
+    <div class="update-time">ผลศัตรูและโรคยาง</div>
+  </div>
+
+  <div class="screen-body">
+    <div class="section-label">📘 คู่มือการป้องกันศัตรูยาง</div>
+
+    <div class="note-box" style="margin-bottom:12px;">
+      ⚠️ เรียนรู้วิธีป้องกันและกำจัดศัตรูยางพารา เพื่อรักษาผลผลิตและคุณภาพยางให้ได้มาตรฐาน
+    </div>
+
+    <div class="chart-card" style="padding: 0; overflow: hidden; border-radius: 12px;">
+      <iframe
+        src="./assets/docs/rubber-pest-guide.pdf"
+        style="width:100%; height:75vh; border:none; display:block;"
+        title="คู่มือการป้องกันศัตรูยาง">
+        เบราว์เซอร์ของคุณไม่รองรับ PDF
+        &mdash; <a href="./assets/docs/rubber-pest-guide.pdf" target="_blank">คลิกเพื่อเปิดไฟล์</a>
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: TIPS ===================== -->
+<div id="screen-tips" class="screen">
+  <div class="screen-header">
+    <button class="back-btn" onclick="navigate('home')">‹ กลับ</button>
+    <h2 class="screen-title">เคล็ดลับเพิ่มรายได้</h2>
+    <div class="update-time">ความรู้จากเกษตรกรต้นแบบ</div>
+  </div>
+
+  <div class="screen-body">
+    <div class="section-label">🎬 วิดีโอความรู้จากเกษตรกรต้นแบบ</div>
+
+    <div class="chart-card" style="padding: 12px;">
+      <div class="chart-title" style="margin-bottom: 10px;">🌿 ตัวอย่างการทำสวนยางของเกษตรกรต้นแบบ<br><small style="font-weight:normal; color:#7A9480;">อ.ณรงค์ กาปัญญา</small></div>
+      <video
+        controls
+        style="width:100%; border-radius:10px; background:#000;"
+        src="./assets/videos/04 ตัวอย่างการทำสวนยางของเกษตรกรต้นแบบ อ.ณรงค์ กาปัญญา.mp4">
+        เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ
+      </video>
+    </div>
+
+    <div class="note-box">
+      💡 เรียนรู้เทคนิคการทำสวนยางจากเกษตรกรต้นแบบที่ประสบความสำเร็จ เพื่อเพิ่มผลผลิตและรายได้
     </div>
   </div>
 </div>
