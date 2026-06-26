@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>ยางพารวย – ระบบวิเคราะห์ราคายางพาราอัจฉริยะ</title>
+  <meta name="description" content="แดชบอร์ดวิเคราะห์ราคายางพาราแบบเรียลไทม์ แจ้งเตือนจังหวะขาย และคำนวณรายได้สำหรับเกษตรกร" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ===================== SCREEN: HOME ===================== -->
+<div id="screen-home" class="screen active">
+  <div class="home-header">
+    <div class="home-header-bg"></div>
+    <div class="home-header-content">
+      <div class="app-logo">🌿</div>
+      <h1 class="app-title">ยางพารวย</h1>
+      <p class="app-subtitle">ระบบวิเคราะห์ราคายางพาราอัจฉริยะ</p>
+      <div class="live-badge">
+        <span class="live-dot"></span>
+        <span id="home-datetime">กำลังโหลด...</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-hero-card">
+    <div class="hero-label">🪣 ยางก้อนถ้วย · ตลาดกลางสุราษฎร์ธานี</div>
+    <div class="hero-price" id="hero-price">--.- บาท/กก.</div>
+    <div class="hero-diff" id="hero-diff">กำลังโหลด...</div>
+    <div class="hero-update">อัปเดตล่าสุด · วันนี้</div>
+  </div>
+
+  <!-- Quick price strip: all 3 types -->
+  <div class="price-strip">
+    <div class="strip-item">
+      <div class="strip-top">
+        <span class="strip-emoji">🪣</span>
+        <div class="strip-info">
+          <span class="strip-name">ยางก้อนถ้วย</span>
+          <span class="strip-sub">สุราษฎร์</span>
+        </div>
+      </div>
+      <div class="strip-val" id="sv-cup">--</div>
+      <div class="strip-diff" id="sd-cup">--</div>
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <div class="strip-top">
+        <span class="strip-emoji">💧</span>
+        <div class="strip-info">
+          <span class="strip-name">น้ำยางสด</span>
+          <span class="strip-sub">สงขลา</span>
+        </div>
+      </div>
+      <div class="strip-val" id="sv-latex">--</div>
+      <div class="strip-diff" id="sd-latex">--</div>
+    </div>
+    <div class="strip-divider"></div>
+    <div class="strip-item">
+      <div class="strip-top">
+        <span class="strip-emoji">🫓</span>
+        <div class="strip-info">
+          <span class="strip-name">ยางแผ่นดิบ</span>
+          <span class="strip-sub">สงขลา</span>
+        </div>
+      </div>
+      <div class="strip-val" id="sv-sheet">--</div>
+      <div class="strip-diff" id="sd-sheet">--</div>
+    </div>
+  </div>
+
+  <div class="menu-grid">
+    <button class="menu-card active-card" id="btn-price" onclick="navigate('price')">
+      <div class="menu-icon">📊</div>
+      <div class="menu-label">ราคายางวันนี้</div>
+      <div class="menu-sub">ราคาแบบเรียลไทม์</div>
+      <div class="menu-arrow">›</div>
+    </button>
+
+    <button class="menu-card active-card" id="btn-alert" onclick="navigate('alert')">
+      <div class="menu-icon">🚨</div>
+      <div class="menu-label">แจ้งเตือนจังหวะขาย</div>
+      <div class="menu-sub">วิเคราะห์จังหวะขาย</div>
+      <div class="menu-arrow">›</div>
+      <div class="menu-badge" id="alert-badge">กำลังวิเคราะห์...</div>
+    </button>
+
+    <button class="menu-card active-card" id="btn-calc" onclick="navigate('calc')">
+      <div class="menu-icon">🧮</div>
+      <div class="menu-label">คำนวณรายได้เพิ่ม</div>
+      <div class="menu-sub">เครื่องคำนวณรายได้</div>
+      <div class="menu-arrow">›</div>
+    </button>
+
+    <button class="menu-card active-card" id="btn-trend" onclick="navigate('trend')">
+      <div class="menu-icon">📈</div>
+      <div class="menu-label">วิเคราะห์แนวโน้ม</div>
+      <div class="menu-sub">วิเคราะห์ทิศทางตลาด</div>
+      <div class="menu-arrow">›</div>
+    </button>
+
+    <button class="menu-card coming-soon-card" disabled>
+      <div class="menu-icon">⚠️</div>
+      <div class="menu-label">เตือนความเสี่ยง</div>
+      <div class="menu-sub">แจ้งเตือนความเสี่ยงตลาด</div>
+      <div class="coming-tag">เร็ว ๆ นี้</div>
+    </button>
+
+    <button class="menu-card coming-soon-card" disabled>
+      <div class="menu-icon">📖</div>
+      <div class="menu-label">เคล็ดลับเพิ่มรายได้</div>
+      <div class="menu-sub">เคล็ดลับเพิ่มผลกำไร</div>
+      <div class="coming-tag">เร็ว ๆ นี้</div>
+    </button>
+  </div>
+
+  <footer class="home-footer">ข้อมูลจากตลาดกลางยางพาราไทย · ยางพารวย v1.0</footer>
+</div>
+
+<!-- ===================== SCREEN: PRICE ===================== -->
+<div id="screen-price" class="screen">
+  <div class="screen-header">
+    <button class="back-btn" onclick="navigate('home')">‹ กลับ</button>
+    <h2 class="screen-title">ราคายางวันนี้</h2>
+    <div class="update-time" id="price-update-time">--</div>
+  </div>
+
+  <div class="screen-body">
+    <div class="section-label">📌 ตลาดกลางสุราษฎร์ธานี &amp; สงขลา · ราคาล่าสุดที่มีข้อมูล</div>
+
+    <div class="price-card featured" id="pc-cup">
+      <div class="pc-header">
+        <span class="pc-icon">🪣</span>
+        <div>
+          <div class="pc-name">ยางก้อนถ้วย</div>
+          <div class="pc-market">ตลาดกลางยางพารา · สุราษฎร์ธานี</div>
+        </div>
+        <div class="pc-badge">แนะนำ</div>
+      </div>
+      <div class="pc-price-row">
+        <span class="pc-price" id="cup-price">--.-- บาท/กก.</span>
+        <span class="pc-diff" id="cup-diff">--</span>
+      </div>
+      <div class="pc-bar">
+        <div class="pc-bar-fill" id="cup-bar" style="width:0%"></div>
+      </div>
+      <div class="pc-info-row">
+        <span>ก่อนหน้า: <b id="cup-yesterday">--</b></span>
+        <span>วันที่: <b id="cup-vol">--</b></span>
+      </div>
+    </div>
+
+    <div class="price-card" id="pc-latex">
+      <div class="pc-header">
+        <span class="pc-icon">💧</span>
+        <div>
+          <div class="pc-name">น้ำยางสด</div>
+          <div class="pc-market">ตลาดกลางยางพารา · สงขลา</div>
+        </div>
+      </div>
+      <div class="pc-price-row">
+        <span class="pc-price" id="latex-price">--.-- บาท/กก.</span>
+        <span class="pc-diff" id="latex-diff">--</span>
+      </div>
+      <div class="pc-bar">
+        <div class="pc-bar-fill" id="latex-bar" style="width:0%"></div>
+      </div>
+      <div class="pc-info-row">
+        <span>ก่อนหน้า: <b id="latex-yesterday">--</b></span>
+        <span>วันที่: <b id="latex-vol">--</b></span>
+      </div>
+    </div>
+
+    <div class="price-card" id="pc-sheet">
+      <div class="pc-header">
+        <span class="pc-icon">🫓</span>
+        <div>
+          <div class="pc-name">ยางแผ่นดิบ</div>
+          <div class="pc-market">ตลาดกลางยางพารา · สงขลา</div>
+        </div>
+      </div>
+      <div class="pc-price-row">
+        <span class="pc-price" id="sheet-price">--.-- บาท/กก.</span>
+        <span class="pc-diff" id="sheet-diff">--</span>
+      </div>
+      <div class="pc-bar">
+        <div class="pc-bar-fill" id="sheet-bar" style="width:0%"></div>
+      </div>
+      <div class="pc-info-row">
+        <span>ก่อนหน้า: <b id="sheet-yesterday">--</b></span>
+        <span>วันที่: <b id="sheet-vol">--</b></span>
+      </div>
+    </div>
+
+    <div class="note-box">
+      💡 ยางก้อนถ้วย: สุราษฎร์ธานี · น้ำยางสด และยางแผ่นดิบ: สงขลา · แสดงราคาล่าสุดที่มีข้อมูล (0 = ไม่เปิดตลาด)
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: ALERT ===================== -->
+<div id="screen-alert" class="screen">
+  <div class="screen-header">
+    <button class="back-btn" onclick="navigate('home')">‹ กลับ</button>
+    <h2 class="screen-title">แจ้งเตือนจังหวะขาย</h2>
+    <div class="update-time">ระบบวิเคราะห์อัจฉริยะ</div>
+  </div>
+  <div class="type-tabs">
+    <button class="type-tab active" id="atab-cup"   onclick="selectAlertType('cup')">🪣 ยางก้อนถ้วย</button>
+    <button class="type-tab"        id="atab-latex" onclick="selectAlertType('latex')">💧 น้ำยางสด</button>
+    <button class="type-tab"        id="atab-sheet" onclick="selectAlertType('sheet')">🫓 ยางแผ่นดิบ</button>
+  </div>
+
+  <div class="screen-body">
+    <div class="alert-main-card" id="alert-main-card">
+      <div class="alert-icon" id="alert-icon">⏳</div>
+      <div class="alert-status" id="alert-status">กำลังวิเคราะห์...</div>
+      <div class="alert-desc" id="alert-desc">ระบบกำลังประมวลผลข้อมูลราคา</div>
+    </div>
+
+    <div class="compare-card">
+      <div class="compare-title">📊 เปรียบเทียบราคา กับ ค่าเฉลี่ย 30 วัน</div>
+      <div class="compare-row">
+        <div class="compare-item">
+          <div class="compare-label">ราคาวันนี้</div>
+          <div class="compare-val today" id="alert-today-price">-- บาท/กก.</div>
+        </div>
+        <div class="compare-vs">เทียบ</div>
+        <div class="compare-item">
+          <div class="compare-label">เฉลี่ย 30 วัน</div>
+          <div class="compare-val ma" id="alert-ma30">-- บาท/กก.</div>
+        </div>
+      </div>
+      <div class="compare-diff-row">
+        ส่วนต่าง: <span class="compare-diff-val" id="alert-diff-val">--</span> บาท/กก.
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">📉 ราคา 7 วันล่าสุด (ยางก้อนถ้วย · สุราษฎร์ฯ)</div>
+      <canvas id="alert-chart" height="140"></canvas>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-label">ราคาสูงสุด 30 วัน</div>
+        <div class="stat-val green" id="stat-high">--</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">ราคาต่ำสุด 30 วัน</div>
+        <div class="stat-val red" id="stat-low">--</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">ค่าเฉลี่ย 30 วัน</div>
+        <div class="stat-val gold" id="stat-avg">--</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">ความผันผวน</div>
+        <div class="stat-val" id="stat-vol">--</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: CALCULATOR ===================== -->
+<div id="screen-calc" class="screen">
+  <div class="screen-header">
+    <button class="back-btn" onclick="navigate('home')">‹ กลับ</button>
+    <h2 class="screen-title">คำนวณรายได้เพิ่ม</h2>
+    <div class="update-time">คำนวณรายได้</div>
+  </div>
+
+  <div class="screen-body">
+    <div class="calc-intro">
+      <div class="calc-intro-icon">💰</div>
+      <p>กรอกข้อมูลยางของคุณ ระบบจะคำนวณรายได้ที่จะได้รับทันที</p>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">🌿 เลือกประเภทยางพารา</label>
+      <div class="type-selector">
+        <button class="type-btn active" id="tbtn-cup" onclick="selectType('cup')">🪣 ยางก้อนถ้วย</button>
+        <button class="type-btn" id="tbtn-latex" onclick="selectType('latex')">💧 น้ำยางสด</button>
+        <button class="type-btn" id="tbtn-sheet" onclick="selectType('sheet')">🫓 ยางแผ่นดิบ</button>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">⚖️ ปริมาณยางที่จะขาย (กิโลกรัม)</label>
+      <div class="input-wrapper">
+        <input type="number" id="calc-amount" class="calc-input" value="1000" min="1" placeholder="กรอกปริมาณ กก." oninput="calculate()" />
+        <span class="input-unit">กก.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">📌 ราคาที่เคยขายได้ล่าสุด (บาท/กก.)</label>
+      <div class="input-wrapper">
+        <input type="number" id="calc-ref" class="calc-input" step="0.01" placeholder="เช่น 60.00" oninput="calculate()" />
+        <span class="input-unit">บาท</span>
+      </div>
+    </div>
+
+    <div class="calc-result-card" id="calc-result">
+      <div class="result-row">
+        <span class="result-label">ราคาขายวันนี้</span>
+        <span class="result-val" id="res-today">-- บาท/กก.</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">ราคาอ้างอิงเดิม</span>
+        <span class="result-val" id="res-ref">-- บาท/กก.</span>
+      </div>
+      <div class="result-row">
+        <span class="result-label">ส่วนต่างกำไร</span>
+        <span class="result-val" id="res-diff">-- บาท/กก.</span>
+      </div>
+      <div class="result-divider"></div>
+      <div class="result-total-label">💵 รายได้รวมวันนี้</div>
+      <div class="result-total" id="res-total">-- บาท</div>
+      <div class="result-extra-label">✨ กำไรเพิ่มเติมจากราคาเดิม</div>
+      <div class="result-extra" id="res-extra">-- บาท</div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">🔄 คำนวณใหม่</button>
+  </div>
+</div>
+
+<!-- ===================== SCREEN: TREND ===================== -->
+<div id="screen-trend" class="screen">
+  <div class="screen-header">
+    <button class="back-btn" onclick="navigate('home')">‹ กลับ</button>
+    <h2 class="screen-title">วิเคราะห์แนวโน้ม</h2>
+    <div class="update-time">วิเคราะห์แนวโน้ม</div>
+  </div>
+  <div class="type-tabs">
+    <button class="type-tab active" id="ttab-cup"   onclick="selectTrendType('cup')">🪣 ยางก้อนถ้วย</button>
+    <button class="type-tab"        id="ttab-latex" onclick="selectTrendType('latex')">💧 น้ำยางสด</button>
+    <button class="type-tab"        id="ttab-sheet" onclick="selectTrendType('sheet')">🫓 ยางแผ่นดิบ</button>
+  </div>
+
+  <div class="screen-body">
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tab-7" onclick="switchTab(7)">📅 7 วัน</button>
+      <button class="tab-btn" id="tab-30" onclick="switchTab(30)">📅 30 วัน</button>
+    </div>
+
+    <div class="trend-summary" id="trend-summary">
+      <div class="trend-card">
+        <div class="trend-card-label">สถานะตลาด</div>
+        <div class="trend-card-val" id="trend-status">--</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-card-label">ราคาเฉลี่ย</div>
+        <div class="trend-card-val gold" id="trend-avg">--</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-card-label">ราคาสูงสุด</div>
+        <div class="trend-card-val green" id="trend-high">--</div>
+      </div>
+      <div class="trend-card">
+        <div class="trend-card-label">ราคาต่ำสุด</div>
+        <div class="trend-card-val red" id="trend-low">--</div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title" id="trend-chart-title">📈 กราฟราคา 7 วัน · ยางก้อนถ้วย (สุราษฎร์ฯ)</div>
+      <div class="chart-legend">
+        <span class="legend-dot blue"></span><span>ราคาจริง</span>
+        <span class="legend-dot orange"></span><span>ค่าเฉลี่ยเคลื่อนที่</span>
+      </div>
+      <canvas id="trend-chart" height="180"></canvas>
+    </div>
+
+    <div class="tech-card" id="tech-card">
+      <div class="tech-title">🔬 สัญญาณทางเทคนิค</div>
+      <div class="tech-list" id="tech-list">
+        <div class="tech-item">กำลังวิเคราะห์...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
