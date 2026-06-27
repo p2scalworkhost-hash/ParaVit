@@ -173,26 +173,80 @@ function navigate(target) {
 }
 
 // ── HOME: Hero card (Cup Lump · สุราษฎร์ธานี) ────────────────
-function renderHomeHero() {
-  const data = getDataForType('cup');
-  if (!data.length) { setText('hero-price', 'ไม่มีข้อมูล'); return; }
+function getMetricsForType(typeKey) {
+  const info   = typeInfo(typeKey);
+  const data   = getDataForType(typeKey);
+  const acc    = priceAccessor(typeKey);
+  if (data.length < 2) return null;
 
   const latest    = data[data.length - 1];
-  const prev      = data.length >= 2 ? data[data.length - 2] : null;
-  const price     = cupPrice(latest);
-  const prevPrice = prev ? cupPrice(prev) : null;
+  const prev      = data[data.length - 2];
+  const price     = acc(latest);
+  const prevPrice = prev ? acc(prev) : null;
   const diff      = prevPrice !== null ? price - prevPrice : null;
 
-  setText('hero-price', `${fmt(price)} บาท/กก.`);
-  const el = document.getElementById('hero-diff');
-  if (diff !== null && el) {
-    const sign  = diff > 0 ? '+' : '';
-    const arrow = diff > 0 ? '▲' : diff < 0 ? '▼' : '▬';
-    el.textContent = `${arrow} ${sign}${fmt(diff)} บาท เทียบเมื่อวาน`;
-    el.style.color  = diff > 0 ? '#2E7D32' : diff < 0 ? '#C62828' : '#757575';
-  } else if (el) {
-    el.textContent = 'ข้อมูลล่าสุด';
-    el.style.color  = '#7A9480';
+  const prices = data.map(acc).filter(Boolean);
+  const last30 = prices.slice(-30);
+  const ma30   = last30.reduce((a, b) => a + b, 0) / last30.length;
+  
+  const marginPercent = ((price - ma30) / ma30) * 100;
+  const isSell        = price > ma30;
+
+  return {
+    typeKey,
+    info,
+    price,
+    diff,
+    ma30,
+    marginPercent,
+    isSell,
+    latestDate: latest.date
+  };
+}
+
+function renderHomeHero() {
+  const types = ['cup', 'latex', 'sheet'];
+  const metricsList = types.map(getMetricsForType).filter(Boolean);
+
+  if (!metricsList.length) {
+    setText('hero-price', 'ไม่มีข้อมูล');
+    return;
+  }
+
+  // Filter those with isSell === true (ควรขาย)
+  const sellTypes = metricsList.filter(m => m.isSell);
+  
+  let selected = null;
+  if (sellTypes.length > 0) {
+    // If there are 'sell' types, pick the one with the highest marginPercent
+    selected = sellTypes.reduce((prev, curr) => (curr.marginPercent > prev.marginPercent) ? curr : prev);
+  } else {
+    // If none are 'sell' types, default to 'cup' (rubber lump)
+    selected = metricsList.find(m => m.typeKey === 'cup') || metricsList[0];
+  }
+
+  // Update Hero Card details
+  setText('hero-label', `${selected.info.emoji} ${selected.info.name} · ตลาดกลาง${selected.info.market}`);
+  setText('hero-price', `${fmt(selected.price)} บาท/กก.`);
+  
+  const diffEl = document.getElementById('hero-diff');
+  if (diffEl) {
+    const diff = selected.diff;
+    if (diff !== null) {
+      const sign  = diff > 0 ? '+' : '';
+      const arrow = diff > 0 ? '▲' : diff < 0 ? '▼' : '▬';
+      diffEl.textContent = `${arrow} ${sign}${fmt(diff)} บาท เทียบเมื่อวาน`;
+      diffEl.style.color  = diff > 0 ? '#2E7D32' : diff < 0 ? '#C62828' : '#757575';
+    } else {
+      diffEl.textContent = 'ข้อมูลล่าสุด';
+      diffEl.style.color  = '#7A9480';
+    }
+  }
+
+  const statusEl = document.getElementById('hero-status');
+  if (statusEl) {
+    statusEl.textContent = selected.isSell ? '🔴 แนะนำ: ควรขาย' : '🟡 แนะนำ: รอดูสถานการณ์';
+    statusEl.className = `hero-status-badge ${selected.isSell ? 'sell' : 'hold'}`;
   }
 }
 
@@ -408,11 +462,21 @@ function selectType(typeKey) {
   const map = { cup: 'tbtn-cup', latex: 'tbtn-latex', sheet: 'tbtn-sheet' };
   const el  = document.getElementById(map[typeKey]);
   if (el) el.classList.add('active');
+
+  // Set typical DRC percentage as default based on rubber type
+  const drcEl = document.getElementById('calc-drc');
+  if (drcEl) {
+    if (typeKey === 'cup') drcEl.value = '50';
+    else if (typeKey === 'latex') drcEl.value = '35';
+    else if (typeKey === 'sheet') drcEl.value = '100';
+  }
+
   calculate();
 }
 
 function calculate() {
   const amount   = parseFloat(document.getElementById('calc-amount').value) || 0;
+  const drcVal   = parseFloat(document.getElementById('calc-drc').value) || 0;
   const refPrice = parseFloat(document.getElementById('calc-ref').value);
   const acc      = priceAccessor(currentCalcType);
   const data     = getDataForType(currentCalcType);
@@ -420,9 +484,10 @@ function calculate() {
 
   if (today === null) { setText('res-today', 'ไม่มีข้อมูล'); return; }
 
-  const totalToday  = amount * today;
+  const drcFactor   = drcVal / 100;
+  const totalToday  = amount * drcFactor * today;
   const diff        = !isNaN(refPrice) ? today - refPrice : null;
-  const extraProfit = diff !== null ? diff * amount : null;
+  const extraProfit = diff !== null ? diff * amount * drcFactor : null;
 
   setText('res-today', `${fmt(today)} บาท/กก.`);
   setText('res-ref',   !isNaN(refPrice) ? `${fmt(refPrice)} บาท/กก.` : 'ยังไม่ได้กรอก');
