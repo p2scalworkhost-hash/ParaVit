@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <title>ยางพารวย – ระบบวิเคราะห์ราคายางพาราอัจฉริยะ</title>
+  <title>ยางง่าย by กยท. เวอร์ชั่น 2 – ระบบวิเคราะห์ราคายางพาราอัจฉริยะ</title>
   <meta name="description" content="แดชบอร์ดวิเคราะห์ราคายางพาราแบบเรียลไทม์ แจ้งเตือนจังหวะขาย และคำนวณรายได้สำหรับเกษตรกร" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,6 +18,7 @@
   <div class="home-header">
     <div class="home-header-bg"></div>
     <div class="home-header-content">
+      <div class="app-brand">ยางง่าย by กยท. เวอร์ชั่น 2</div>
       <div class="app-logo">🌿</div>
       <h1 class="app-title">ยางพารวย</h1>
       <p class="app-subtitle">ระบบวิเคราะห์ราคายางพาราอัจฉริยะ</p>
@@ -29,7 +30,10 @@
   </div>
 
   <div class="home-hero-card">
-    <div class="hero-label">🪣 ยางก้อนถ้วย · ตลาดกลางสุราษฎร์ธานี</div>
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+      <div class="hero-label" id="hero-label">🪣 ยางก้อนถ้วย · ตลาดกลางสุราษฎร์ธานี</div>
+      <div id="hero-status" class="hero-status-badge">กำลังวิเคราะห์...</div>
+    </div>
     <div class="hero-price" id="hero-price">--.- บาท/กก.</div>
     <div class="hero-diff" id="hero-diff">กำลังโหลด...</div>
     <div class="hero-update">อัปเดตล่าสุด · วันนี้</div>
@@ -119,7 +123,7 @@
     </button>
   </div>
 
-  <footer class="home-footer">ข้อมูลจากตลาดกลางยางพาราไทย · ยางพารวย v1.0</footer>
+  <footer class="home-footer">ข้อมูลจากตลาดกลางยางพาราไทย · ยางง่าย by กยท. v2.0</footer>
 </div>
 
 <!-- ===================== SCREEN: PRICE ===================== -->
@@ -295,6 +299,14 @@
       <div class="input-wrapper">
         <input type="number" id="calc-amount" class="calc-input" value="1000" min="1" placeholder="กรอกปริมาณ กก." oninput="calculate()" />
         <span class="input-unit">กก.</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">🎯 % เนื้อยางแห้งที่คาดการณ์</label>
+      <div class="input-wrapper">
+        <input type="number" id="calc-drc" class="calc-input" value="100" min="1" max="100" placeholder="กรอก % เนื้อยางแห้ง" oninput="calculate()" />
+        <span class="input-unit">%</span>
       </div>
     </div>
 
